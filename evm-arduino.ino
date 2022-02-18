@@ -15,9 +15,6 @@ You should have received a copy of the GNU General Public License
 along with evm-arduino. If not, see <http://www.gnu.org/licenses/>.
 
 */
-#define WIFI_SSID "SSID"
-#define WIFI_PASSWORD "PASSWORD"
-
 #include <HTTPClient.h>
 #include <WiFi.h>
 
@@ -25,21 +22,39 @@ along with evm-arduino. If not, see <http://www.gnu.org/licenses/>.
 
 #include "include/vm.h"
 
+// Sometimes downloading from GitHub causes the device to reboot. Best store on a local web server without https: https://raw.githubusercontent.com/bor0/evm-arduino/main/bin/example.bin
+// E.g. http://192.168.0.108:8080/example.bin
+char binary_url[255];
+
 void setup()
 {
     Serial.begin(115200);
     delay(10);
 
-    printf("Connecting to WiFi");
+    Serial.println("Enter WiFi SSID (newline terminated): ");
+    while (!Serial.available()) delay(10);
+    String ssid = Serial.readStringUntil('\n');
 
-    WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+    Serial.println("Enter WiFi password (newline terminated): ");
+    while (!Serial.available()) delay(10);
+    String password = Serial.readStringUntil('\n');
+
+    Serial.println("Enter URL for binary (newline terminated): ");
+    while (!Serial.available()) delay(10);
+    String url = Serial.readStringUntil('\n');
+
+    memcpy(binary_url, url.c_str(), sizeof(binary_url));
+
+    Serial.print("Connecting to WiFi");
+
+    WiFi.begin(ssid.c_str(), password.c_str());
 
     while (WiFi.status() != WL_CONNECTED) {
         delay(500);
-        printf(".");
+        Serial.print(".");
     }
 
-    printf("\nConnected to WiFi\n");
+    Serial.println("\nConnected to WiFi");
 }
 
 void loop()
@@ -49,9 +64,8 @@ void loop()
 
     printf("Requesting (extended) CHIP-8 binary\n");
 
-    // Sometimes downloading from GitHub causes the device to reboot. Best store on a local web server without https
-    //client.begin("https://raw.githubusercontent.com/bor0/evm-arduino/main/bin/example.bin");
-    client.begin("http://192.168.0.108:8080/example.bin");
+
+    client.begin(binary_url);
     client.GET();
 
     printf("Initializing VM\n");
