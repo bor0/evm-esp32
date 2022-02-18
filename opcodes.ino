@@ -33,6 +33,10 @@ void parse_opcode(struct vm *VM, uint16_t opcode)
         VM->registers.pc = VM->stack[VM->registers.sp];
         return;
         break;
+    case 0xE0A0:
+        delay(VM->registers.v[2]);
+        return;
+        break;
     case 0xE0A2:
         /* Read from input (first register) into output (second register) */
         VM->registers.v[1] = analogRead(VM->registers.v[0]);
@@ -41,10 +45,6 @@ void parse_opcode(struct vm *VM, uint16_t opcode)
     case 0xE0A3:
         /* Write to pin (first register) a value (second register) */
         digitalWrite(VM->registers.v[0], VM->registers.v[1]);
-        return;
-        break;
-    case 0xE0A0:
-        delay(VM->registers.v[2]);
         return;
         break;
     default:

@@ -17,10 +17,10 @@ The following instructions that are related to games (drawing, etc.) are removed
 
 The following instructions that are related to IO control are added:
 
+- `E0A0` - sleep for second register's value milliseconds
 - `EXA1` - sets the pin mode X to the pin (value in first register)
 - `E0A2` - does `analogRead` to the first register and stores the result in the second register
 - `E0A3` - does `analogWrite` to the first register using the value from the second register
-- `E0A4` - sleep for second register's value milliseconds
 
 Registers are changed from 8 bit to 16 bit.
 

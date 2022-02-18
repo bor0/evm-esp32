@@ -8,11 +8,11 @@ E0A3 ; digitalWrite(5, 1);
 72FA ; V[2] += 250
 72FA ; V[2] += 250
 72FA ; V[2] = 1000
-E0A4 ; delay(1000);
+E0A0 ; delay(1000);
 
 6100 ; V[1] = 0
 E0A3 ; digitalWrite(5, 0);
 
-E0A4 ; delay(1000);
+E0A0 ; delay(1000);
 
 1200 ; jump to start
