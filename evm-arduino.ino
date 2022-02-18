@@ -1,18 +1,18 @@
 /*
-This file is part of evm-arduino.
+This file is part of evm-esp32.
 
-evm-arduino is free software: you can redistribute it and/or modify
+evm-esp32 is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-evm-arduino is distributed in the hope that it will be useful,
+evm-esp32 is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with evm-arduino. If not, see <http://www.gnu.org/licenses/>.
+along with evm-esp32. If not, see <http://www.gnu.org/licenses/>.
 
 */
 #include <HTTPClient.h>
@@ -22,7 +22,7 @@ along with evm-arduino. If not, see <http://www.gnu.org/licenses/>.
 
 #include "include/vm.h"
 
-// Sometimes downloading from GitHub causes the device to reboot. Best store on a local web server without https: https://raw.githubusercontent.com/bor0/evm-arduino/main/bin/example.bin
+// Sometimes downloading from GitHub causes the device to reboot. Best store on a local web server without https: https://raw.githubusercontent.com/bor0/evm-esp32/main/bin/example.bin
 // E.g. http://192.168.0.108:8080/example.bin
 char binary_url[255];
 

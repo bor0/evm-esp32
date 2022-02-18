@@ -1,7 +1,7 @@
-evm-arduino
-===========
+evm-esp32
+=========
 
-A virtual machine for Arduino, allowing dynamic program updates.
+A virtual machine for ESP32, allowing dynamic program updates.
 
 Based on my [implementation of CHIP-8](https://github.com/bor0/chip-8), where the gaming related instructions are removed, and instead instructions for IO pin controlling are added.
 
