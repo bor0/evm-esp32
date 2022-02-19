@@ -22,24 +22,14 @@ along with evm-esp32. If not, see <http://www.gnu.org/licenses/>.
 
 void vm_init(struct vm *VM, String program)
 {
-    uint16_t i = 0;
-    int size = program.length();
-
     memset(VM, '\0', sizeof(struct vm));
     VM->registers.pc = 0x200;
+    int size = program.length();
 
-    while (i < size && i < 0xFFF - 0x200) {
-        int fH, fL;
-
-        fH = program[i];
-        if (fH == -1) break;
-        VM->memory[VM->registers.pc + i] = fH;
-
-        fL = program[i+1];
-        if (fL == -1) break;
-        VM->memory[VM->registers.pc + i + 1] = fL;
-
-        i += 2;
+    // 1 opcode per iteration
+    for (uint16_t i = 0; i < size && i < 0xFFF - 0x200; i += 2) {
+        VM->memory[VM->registers.pc + i] = program[i];
+        VM->memory[VM->registers.pc + i + 1] = program[i+1];
     }
 }
 
