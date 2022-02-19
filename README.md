@@ -26,7 +26,7 @@ Registers are changed from 8 bit to 16 bit.
 
 In order to reload a program, use the `0000` instruction to halt the VM and restart.
 
-Tested on ESP32 Arduino (LOLIN D32).
+Tested on ESP32 Arduino (WROOM32).
 
 References:
 

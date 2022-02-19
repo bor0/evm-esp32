@@ -1,5 +1,5 @@
-6005 ; V[0] = 5 (LED_BUILTIN for ESP32)
-E2A1 ; pinMode(V[0], 2); (OUTPUT for ESP32)
+6002 ; V[0] = 2 (LED_BUILTIN for ESP WROOM32)
+E2A1 ; pinMode(V[0], 2); (OUTPUT for ESP WROOM32)
 
 6101 ; V[1] = 1
 E0A3 ; digitalWrite(5, 1);
