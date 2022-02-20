@@ -1,10 +1,12 @@
+#include <analogWrite.h>
+
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
 }
 
 void loop() {
-  digitalWrite(LED_BUILTIN, HIGH);
+  analogWrite(LED_BUILTIN, 255);
   delay(1000);
-  digitalWrite(LED_BUILTIN, LOW);
+  analogWrite(LED_BUILTIN, 0);
   delay(1000);
 }

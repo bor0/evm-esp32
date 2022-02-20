@@ -16,6 +16,7 @@ along with evm-esp32. If not, see <http://www.gnu.org/licenses/>.
 
 */
 #include "include/opcodes.h"
+#include <analogWrite.h>
 
 void parse_opcode(struct vm *VM, uint16_t opcode)
 {
@@ -44,7 +45,7 @@ void parse_opcode(struct vm *VM, uint16_t opcode)
         break;
     case 0xE0A3:
         /* Write to pin (first register) a value (second register) */
-        digitalWrite(VM->registers.v[0], VM->registers.v[1]);
+        analogWrite(VM->registers.v[0], VM->registers.v[1]);
         return;
         break;
     default:

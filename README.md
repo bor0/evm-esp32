@@ -28,6 +28,10 @@ In order to reload a program, use the `0000` instruction to halt the VM and rest
 
 Tested on ESP32 Arduino (WROOM32).
 
+Prerequisites:
+
+- Install analogWrite polyfill
+
 References:
 
 - http://en.wikipedia.org/wiki/CHIP-8
