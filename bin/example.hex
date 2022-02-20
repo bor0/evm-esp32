@@ -1,18 +1,16 @@
 6002 ; V[0] = 2 (LED_BUILTIN for ESP WROOM32)
 E2A1 ; pinMode(V[0], 2); (OUTPUT for ESP WROOM32)
 
-61FF ; V[1] = 255
-E0A3 ; analogWrite(2, 255);
-
 62FA ; V[2] = 250
-72FA ; V[2] += 250
-72FA ; V[2] += 250
-72FA ; V[2] = 1000
-E0A0 ; delay(1000);
+823E ; V[2] = 500 (LSH)
+823E ; V[2] = 1000 (LSH)
+
+61FF ; V[1] = 255, loop begin
+E0A3 ; analogWrite(V[0], V[1]);
+E0A0 ; delay(V[2]);
 
 6100 ; V[1] = 0
-E0A3 ; analogWrite(2, 0);
+E0A3 ; analogWrite(V[0], V[1]);
+E0A0 ; delay(V[2]);
 
-E0A0 ; delay(1000);
-
-1200 ; jump to start
+120A ; jump to loop

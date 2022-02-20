@@ -64,7 +64,6 @@ void loop()
 
     printf("Requesting (extended) CHIP-8 binary\n");
 
-
     client.begin(binary_url);
     client.GET();
 
