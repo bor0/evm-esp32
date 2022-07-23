@@ -36,5 +36,7 @@ References:
 
 - http://en.wikipedia.org/wiki/CHIP-8
 - https://github.com/bor0/chip-8
+- https://ieeexplore.ieee.org/document/9828788
+- https://hackaday.com/2022/02/27/esp32-virtual-machine-lets-you-change-programs-on-the-fly/
 
 Boro Sitnikovski
